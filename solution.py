@@ -11,6 +11,8 @@ def find_triplet(array, sum):
     23 , 54 , 67
     """
     length = len(array)
+    if length >= 1000 or length < 3 or sum > 3 * 10 ^ 9:
+        return
     quicksort_asc(array, 0, length - 1)
     for i in range(0, length - 2):
         first_element = i + 1
@@ -53,4 +55,5 @@ def partition(array, bottom_index, top_index):
 
 if __name__ == '__main__':
     import doctest
+
     doctest.testmod(verbose=True)
