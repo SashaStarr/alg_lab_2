@@ -9,9 +9,14 @@ def find_triplet(array, sum):
     Sorry, Ilona, there is no triplet for this num =(
     >>> find_triplet([10,23,43,67,54],144)
     23 , 54 , 67
+    >>> find_triplet([2,2,2], 6)
+    2 , 2 , 2
+    >>> find_triplet([2,2,9], 6)
+    Sorry, Ilona, there is no triplet for this num =(
+
     """
     length = len(array)
-    if length >= 1000 or length <= 3 or sum >= 3 * pow(10, 9):
+    if length >= 1000 or length < 3 or sum >= 3 * pow(10, 9):
         return
     quicksort_asc(array, 0, length - 1)
     for i in range(0, length - 2):
@@ -20,7 +25,6 @@ def find_triplet(array, sum):
         while first_element < last_element:
             if array[i] + array[first_element] + array[last_element] == sum:
                 return print(array[i], ',', array[first_element], ',', array[last_element])
-
             elif array[i] + array[first_element] + array[last_element] < sum:
                 first_element += 1
             else:
@@ -30,6 +34,10 @@ def find_triplet(array, sum):
 
 def quicksort_asc(array, bottom_index, top_index):
     """
+    :param array: array of numbers to sort
+    :param bottom_index: first element of array
+    :param top_index: last element of array
+    :return: returning sorted array
     >>> quicksort_asc([4,3,6], 0, 2)
     [3, 4, 6]
     """
